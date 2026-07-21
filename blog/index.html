@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20rx%3D%277%27%20fill%3D%27%232F6F6A%27%2F%3E%3Ctext%20x%3D%2716%27%20y%3D%2722.5%27%20font-family%3D%27-apple-system%2CSegoe%20UI%2CHelvetica%2CArial%2Csans-serif%27%20font-size%3D%2720%27%20font-weight%3D%27700%27%20fill%3D%27%23ffffff%27%20text-anchor%3D%27middle%27%3EP%3C%2Ftext%3E%3C%2Fsvg%3E">
+<title>Guides — PDF Source Prep</title>
+<meta name="description" content="Short, practical guides on prepping PDFs for Claude and ChatGPT: fixing 'PDF too long' errors, stopping made-up citations, and feeding multiple PDFs at once.">
+<link rel="canonical" href="/blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Guides — PDF Source Prep">
+<meta property="og:description" content="Practical guides on prepping PDFs for Claude and ChatGPT.">
+<meta property="og:image" content="/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Guides — PDF Source Prep">
+<meta name="twitter:image" content="/og.png">
+<style>
+  :root{
+    --bg:#F4F5F3;--surface:#FFFFFF;--ink:#1A2B3A;--muted:#6B7785;--line:#DFE2DE;
+    --accent:#2F6F6A;--accent-soft:#E1EEEB;--accent-ring:#3E8A83;
+    --mono:ui-monospace,"SF Mono","JetBrains Mono","Menlo",monospace;
+    --sans:system-ui,-apple-system,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;line-height:1.7}
+  a{color:var(--accent)}
+  .topbar{max-width:720px;margin:0 auto;padding:20px 22px 0}
+  .topbar a{font-family:var(--mono);font-size:13px;color:var(--muted);text-decoration:none}
+  .topbar a:hover{color:var(--ink)}
+  main{max-width:680px;margin:0 auto;padding:26px 22px 48px}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent);margin:0 0 10px}
+  h1{font-size:30px;line-height:1.18;letter-spacing:-.02em;margin:0 0 10px}
+  .lede{font-size:17px;color:var(--muted);margin:0 0 28px;max-width:40em}
+  .guides{display:flex;flex-direction:column;gap:12px}
+  a.guide{display:block;background:var(--surface);border:1px solid var(--line);border-radius:12px;
+    padding:16px 18px;text-decoration:none;transition:border-color .12s}
+  a.guide:hover{border-color:var(--accent-ring)}
+  a.guide b{display:block;font-size:17px;color:var(--ink);margin:0 0 4px}
+  a.guide span{display:block;font-size:14px;color:var(--muted);line-height:1.5}
+  .backtool{margin-top:30px}
+  .backtool a{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;
+    font-weight:600;font-size:15px;padding:12px 20px;border-radius:9px}
+  .backtool a:hover{background:#255a55}
+  .end{margin-top:34px;padding-top:20px;border-top:1px solid var(--line);
+    font-family:var(--mono);font-size:12px;color:var(--muted);line-height:1.7}
+  @media (max-width:560px){ h1{font-size:25px} }
+</style>
+</head>
+<body>
+  <div class="topbar"><a href="/">← PDF Source Prep</a></div>
+  <main>
+    <p class="kicker">Guides</p>
+    <h1>Prepping PDFs for Claude &amp; ChatGPT</h1>
+    <p class="lede">Short, practical fixes for the everyday friction of working with PDFs and AI — trimming, citations, and file limits.</p>
+
+    <div class="guides">
+      <a class="guide" href="/blog/pdf-too-long-for-chatgpt">
+        <b>What to do when ChatGPT says your PDF is too long</b>
+        <span>Why it happens, and how trimming to the pages you need fixes it.</span>
+      </a>
+      <a class="guide" href="/blog/chatgpt-making-up-citations">
+        <b>Why ChatGPT invents page numbers from your PDFs (and how to stop it)</b>
+        <span>The one prompt that keeps AI citations honest and checkable.</span>
+      </a>
+      <a class="guide" href="/blog/feed-multiple-pdfs-to-ai">
+        <b>How to feed multiple PDFs to Claude or ChatGPT</b>
+        <span>Getting several sources in without hitting the file or context limit.</span>
+      </a>
+    </div>
+
+    <div class="backtool"><a href="/">Open the tool →</a></div>
+
+    <div class="end">
+      PDF Source Prep · a free, browser-only tool for prepping PDFs for Claude and ChatGPT.<br>
+      Your files never leave your browser.
+    </div>
+  </main>
+</body>
+</html>

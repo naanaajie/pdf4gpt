@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20rx%3D%277%27%20fill%3D%27%232F6F6A%27%2F%3E%3Ctext%20x%3D%2716%27%20y%3D%2722.5%27%20font-family%3D%27-apple-system%2CSegoe%20UI%2CHelvetica%2CArial%2Csans-serif%27%20font-size%3D%2720%27%20font-weight%3D%27700%27%20fill%3D%27%23ffffff%27%20text-anchor%3D%27middle%27%3EP%3C%2Ftext%3E%3C%2Fsvg%3E">
+<title>What to Do When ChatGPT Says Your PDF Is Too Long</title>
+<meta name="description" content="If ChatGPT or Claude says your PDF is too long, don't feed the whole file. Trim it to the pages you need, keep it as a PDF, and add a citation instruction. Here's the 4-minute fix.">
+<!-- After deploying, set the absolute canonical + OG URLs for this article. -->
+<link rel="canonical" href="/blog/pdf-too-long-for-chatgpt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="What to Do When ChatGPT Says Your PDF Is Too Long">
+<meta property="og:description" content="Don't feed the whole file. Trim to the pages you need, keep it as a PDF, and tell the model how to cite. The 4-minute fix.">
+<meta property="og:image" content="/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What to Do When ChatGPT Says Your PDF Is Too Long">
+<meta name="twitter:description" content="Trim to the pages you need, keep it as a PDF, and tell the model how to cite.">
+<meta name="twitter:image" content="/og.png">
+<style>
+  :root{
+    --bg:#F4F5F3;--surface:#FFFFFF;--ink:#1A2B3A;--muted:#6B7785;--line:#DFE2DE;
+    --accent:#2F6F6A;--accent-soft:#E1EEEB;--accent-ring:#3E8A83;
+    --mono:ui-monospace,"SF Mono","JetBrains Mono","Menlo",monospace;
+    --sans:system-ui,-apple-system,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;line-height:1.7}
+  a{color:var(--accent)}
+  .topbar{max-width:720px;margin:0 auto;padding:20px 22px 0}
+  .topbar a{font-family:var(--mono);font-size:13px;color:var(--muted);text-decoration:none}
+  .topbar a:hover{color:var(--ink)}
+  article{max-width:680px;margin:0 auto;padding:26px 22px 40px}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent);margin:0 0 10px}
+  h1{font-size:32px;line-height:1.18;letter-spacing:-.02em;margin:0 0 12px}
+  .byline{font-family:var(--mono);font-size:13px;color:var(--muted);margin:0 0 26px}
+  article p{font-size:18px;margin:0 0 18px}
+  article h2{font-size:21px;letter-spacing:-.01em;margin:34px 0 12px}
+  article ul{font-size:18px;padding-left:1.1em;margin:0 0 18px}
+  article li{margin:0 0 10px}
+  article li b{color:var(--ink)}
+  blockquote{margin:0 0 20px;background:var(--surface);border:1px solid var(--line);
+    border-left:3px solid var(--accent);border-radius:10px;padding:16px 18px;
+    font-size:16px;color:var(--ink)}
+  .cta{background:var(--surface);border:1px solid var(--accent-ring);border-radius:14px;
+    padding:22px;margin:30px 0}
+  .cta h3{margin:0 0 8px;font-size:18px}
+  .cta p{font-size:16px;color:var(--muted);margin:0 0 16px}
+  .cta a.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;
+    font-weight:600;font-size:15px;padding:12px 20px;border-radius:9px}
+  .cta a.btn:hover{background:#255a55}
+  .cta .fineprint{display:block;margin-top:10px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+  .end{margin-top:34px;padding-top:20px;border-top:1px solid var(--line);
+    font-family:var(--mono);font-size:12px;color:var(--muted);line-height:1.7}
+  @media (max-width:560px){ h1{font-size:26px} article p,article ul{font-size:17px} }
+</style>
+</head>
+<body>
+  <div class="topbar"><a href="/">← PDF Source Prep</a></div>
+  <article>
+    <p class="kicker">Guide</p>
+    <h1>What to Do When ChatGPT Says Your PDF Is Too Long</h1>
+    <p class="byline">A 4-minute fix</p>
+
+    <p>You dropped a PDF into ChatGPT (or Claude), and instead of an answer you got <em>"the message is too long,"</em> a cut-off reply, or a summary that clearly skipped half the document. Frustrating — especially when that PDF is the whole reason you opened the chat.</p>
+
+    <p>The short version: <b>don't feed the whole thing.</b> Give the model only the pages you actually need, keep them as a PDF, and tell it how to cite. Here's why, and how to do it in a couple of minutes.</p>
+
+    <h2>Why it happens</h2>
+    <p>Two limits are colliding. A model can only "see" so much at once — its context window — and the chat apps also cap how big an upload or message can be. A dense 200-page book blows past both. When it does, the model either refuses, or quietly reads only part of the file. The second case is worse, because you can't tell what it skipped.</p>
+
+    <h2>Three fixes — and the one that actually works</h2>
+    <p>Most people reach for one of three things:</p>
+    <ul>
+      <li><b>Split and paste.</b> Copy chunks of text in by hand. It works, but it's tedious and you lose every figure, table, and scan.</li>
+      <li><b>Convert to plain text or Markdown.</b> Shrinks the file, but throws away images, tables, and the page numbers printed on each page. Fine for a text-only report; bad for anything with figures or scanned pages.</li>
+      <li><b>Trim to the pages you need.</b> Keep only the relevant pages and hand those over. Almost always the best move: it fits the limit, and the model stops spending attention on the 180 pages you didn't care about.</li>
+    </ul>
+    <p>A focused 25-page packet gets you a sharper answer than a 300-page dump — nearly every time.</p>
+
+    <h2>Keep it as a PDF, not text</h2>
+    <p>This part surprises people: you usually shouldn't convert the PDF at all. Claude and ChatGPT read the page images directly, so if you hand them a trimmed PDF, the figures, tables, and scanned maps come along for free — and so do the page numbers printed on each page, which matter for the next step.</p>
+
+    <h2>Stop it from inventing page numbers</h2>
+    <p>Once the document is trimmed, add a short instruction so the citations stay honest. Paste something like this alongside your PDF:</p>
+    <blockquote>Use the attached PDF as the source. Cite by the page number printed on each page (in the header or footer), not the page's position in the file. If a page has no printed number, cite the section and say so. Never guess a page number, and if something isn't in the source, say so.</blockquote>
+    <p>That one paragraph is the difference between "page 34 of the file" (useless once you've trimmed or combined anything) and a citation you can actually check.</p>
+
+    <div class="cta">
+      <h3>Don't want to do this by hand every time?</h3>
+      <p>PDF Source Prep does exactly these steps: pick the pages you need and it exports a trimmed PDF plus that citation prompt, ready to drop into Claude or ChatGPT. It runs entirely in your browser — nothing is uploaded.</p>
+      <a class="btn" href="/">Try PDF Source Prep — free</a>
+      <span class="fineprint">No sign-up · 100% in your browser</span>
+    </div>
+
+    <h2>The whole workflow, in one line</h2>
+    <p>Trim to the pages you need → keep them as a PDF → add a citation instruction. Do that, and "your PDF is too long" stops being a problem — and the answers get better, because the model is finally reading only what matters.</p>
+
+    <p style="margin-top:14px;font-size:16px;color:var(--muted)">Related: <a href="/blog/chatgpt-making-up-citations">Why ChatGPT invents page numbers</a> · <a href="/blog/feed-multiple-pdfs-to-ai">How to feed multiple PDFs to AI</a>.</p>
+
+    <div class="end">
+      PDF Source Prep · a free, browser-only tool for prepping PDFs for Claude and ChatGPT.<br>
+      Your files never leave your browser.
+    </div>
+  </article>
+</body>
+</html>

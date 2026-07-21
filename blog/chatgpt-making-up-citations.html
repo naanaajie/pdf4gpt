@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20rx%3D%277%27%20fill%3D%27%232F6F6A%27%2F%3E%3Ctext%20x%3D%2716%27%20y%3D%2722.5%27%20font-family%3D%27-apple-system%2CSegoe%20UI%2CHelvetica%2CArial%2Csans-serif%27%20font-size%3D%2720%27%20font-weight%3D%27700%27%20fill%3D%27%23ffffff%27%20text-anchor%3D%27middle%27%3EP%3C%2Ftext%3E%3C%2Fsvg%3E">
+<title>Why ChatGPT Invents Page Numbers From Your PDFs (and How to Stop It)</title>
+<meta name="description" content="ChatGPT and Claude often make up page numbers when citing PDFs. Here's why it happens — and the one instruction that gets you citations you can actually check.">
+<!-- After deploying, set the absolute canonical + OG URLs for this article. -->
+<link rel="canonical" href="/blog/chatgpt-making-up-citations">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Why ChatGPT Invents Page Numbers From Your PDFs (and How to Stop It)">
+<meta property="og:description" content="It's not lying on purpose — it usually can't see a real page number to give you. Here's the fix.">
+<meta property="og:image" content="/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Why ChatGPT Invents Page Numbers From Your PDFs">
+<meta name="twitter:description" content="Why AI makes up citations from PDFs, and the one instruction that stops it.">
+<meta name="twitter:image" content="/og.png">
+<style>
+  :root{
+    --bg:#F4F5F3;--surface:#FFFFFF;--ink:#1A2B3A;--muted:#6B7785;--line:#DFE2DE;
+    --accent:#2F6F6A;--accent-soft:#E1EEEB;--accent-ring:#3E8A83;
+    --mono:ui-monospace,"SF Mono","JetBrains Mono","Menlo",monospace;
+    --sans:system-ui,-apple-system,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;line-height:1.7}
+  a{color:var(--accent)}
+  .topbar{max-width:720px;margin:0 auto;padding:20px 22px 0}
+  .topbar a{font-family:var(--mono);font-size:13px;color:var(--muted);text-decoration:none}
+  .topbar a:hover{color:var(--ink)}
+  article{max-width:680px;margin:0 auto;padding:26px 22px 40px}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent);margin:0 0 10px}
+  h1{font-size:32px;line-height:1.18;letter-spacing:-.02em;margin:0 0 12px}
+  .byline{font-family:var(--mono);font-size:13px;color:var(--muted);margin:0 0 26px}
+  article p{font-size:18px;margin:0 0 18px}
+  article h2{font-size:21px;letter-spacing:-.01em;margin:34px 0 12px}
+  article ul{font-size:18px;padding-left:1.1em;margin:0 0 18px}
+  article li{margin:0 0 10px}
+  article li b{color:var(--ink)}
+  blockquote{margin:0 0 20px;background:var(--surface);border:1px solid var(--line);
+    border-left:3px solid var(--accent);border-radius:10px;padding:16px 18px;
+    font-size:16px;color:var(--ink)}
+  .cta{background:var(--surface);border:1px solid var(--accent-ring);border-radius:14px;
+    padding:22px;margin:30px 0}
+  .cta h3{margin:0 0 8px;font-size:18px}
+  .cta p{font-size:16px;color:var(--muted);margin:0 0 16px}
+  .cta a.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;
+    font-weight:600;font-size:15px;padding:12px 20px;border-radius:9px}
+  .cta a.btn:hover{background:#255a55}
+  .cta .fineprint{display:block;margin-top:10px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+  .end{margin-top:34px;padding-top:20px;border-top:1px solid var(--line);
+    font-family:var(--mono);font-size:12px;color:var(--muted);line-height:1.7}
+  .end a{color:var(--accent)}
+  @media (max-width:560px){ h1{font-size:25px} article p,article ul{font-size:17px} }
+</style>
+</head>
+<body>
+  <div class="topbar"><a href="/">← PDF Source Prep</a></div>
+  <article>
+    <p class="kicker">Guide</p>
+    <h1>Why ChatGPT Invents Page Numbers From Your PDFs (and How to Stop It)</h1>
+    <p class="byline">A 4-minute read</p>
+
+    <p>You ask ChatGPT or Claude to back up a claim with a citation, and it hands you a confident-looking "p.&nbsp;142." You go to check it — and page 142 says something else entirely, or the number doesn't exist. If you have to stand behind your references, that's not a quirk. It's a dealbreaker.</p>
+
+    <p>Here's the reassuring part: the model usually isn't lying on purpose. <b>It just can't see a real page number to give you</b> — so it fills the gap with a plausible one. Fix that, and the made-up citations mostly stop. Here's why it happens and exactly how to fix it.</p>
+
+    <h2>Why it makes them up</h2>
+    <p>Two things are usually going on:</p>
+    <ul>
+      <li><b>It only knows the file's position, not the book's page.</b> When you upload a raw PDF, the model often just knows "this is the 34th page of the file." The moment you <a href="/blog/pdf-too-long-for-chatgpt">trim or combine sources</a>, that number stops matching the printed page — so "page 34" is meaningless.</li>
+      <li><b>You stripped the real numbers out.</b> If you converted the PDF to plain text or Markdown first, the page numbers printed on each page are gone. Asked to cite anyway, the model invents one. That's the hallucination.</li>
+    </ul>
+
+    <h2>The key insight: the real number is right there on the page</h2>
+    <p>Claude and ChatGPT are multimodal — they read the page <em>image</em>, not just extracted text. And on almost every book, paper, or scan, the real page number is printed in the header or footer. If you keep the document as a PDF instead of converting it, the model can literally see "88" sitting in the corner and cite that. You just have to tell it to look.</p>
+
+    <h2>The instruction that fixes it</h2>
+    <p>Paste something like this alongside your PDF:</p>
+    <blockquote>Use the attached PDF as the source. Cite by the page number printed on each page (header or footer), not the page's position in the file. If a page has no printed number, cite the section and say so. Never guess a page number, and if a claim isn't supported by the source, say "not in the source."</blockquote>
+    <p>Each line is doing a job:</p>
+    <ul>
+      <li><b>Cite the printed number, not the file position</b> — kills the useless "page 34 of the file."</li>
+      <li><b>No printed number? Cite the section and say so</b> — gives the model an honest fallback instead of a reason to invent.</li>
+      <li><b>Never guess; say when it's not in the source</b> — this is the line that actually stops the hallucination. You're giving it permission to say "I don't know," which models rarely do unless asked.</li>
+    </ul>
+
+    <h2>Now you can verify in ten seconds</h2>
+    <p>Because the number is printed on the page, every citation becomes checkable. The model cites p.&nbsp;88? Open page 88 and look at the corner — it should say 88, and it should say what the model claims. A made-up citation falls apart the instant you look. That quick check is the whole point: not "trust the AI," but "make the AI cite something you can trust."</p>
+
+    <div class="cta">
+      <h3>Want the citation prompt done for you?</h3>
+      <p>PDF Source Prep lets you pick the pages you need and exports a trimmed PDF <em>plus</em> that exact citation instruction — with figures and printed page numbers kept intact. It runs entirely in your browser; nothing is uploaded.</p>
+      <a class="btn" href="/">Try PDF Source Prep — free</a>
+      <span class="fineprint">No sign-up · 100% in your browser</span>
+    </div>
+
+    <h2>In one line</h2>
+    <p>Keep your sources as PDFs so the printed page numbers survive, and tell the model to read them and never guess. Do that, and "the AI made up a citation" turns into "the AI cited page 88 — and page 88 checks out."</p>
+
+    <div class="end">
+      Related: <a href="/blog/pdf-too-long-for-chatgpt">What to do when ChatGPT says your PDF is too long</a>.<br>
+      PDF Source Prep · a free, browser-only tool for prepping PDFs for Claude and ChatGPT. Your files never leave your browser.
+    </div>
+  </article>
+</body>
+</html>

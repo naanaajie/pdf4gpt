@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20rx%3D%277%27%20fill%3D%27%232F6F6A%27%2F%3E%3Ctext%20x%3D%2716%27%20y%3D%2722.5%27%20font-family%3D%27-apple-system%2CSegoe%20UI%2CHelvetica%2CArial%2Csans-serif%27%20font-size%3D%2720%27%20font-weight%3D%27700%27%20fill%3D%27%23ffffff%27%20text-anchor%3D%27middle%27%3EP%3C%2Ftext%3E%3C%2Fsvg%3E">
+<title>How to Feed Multiple PDFs to Claude or ChatGPT (Without Hitting the Limit)</title>
+<meta name="description" content="Uploading several PDFs to ChatGPT or Claude and hitting the file limit? Here's why zipping them fails, and a cleaner way to combine multiple PDFs into one packet.">
+<!-- After deploying, set the absolute canonical + OG URLs for this article. -->
+<link rel="canonical" href="/blog/feed-multiple-pdfs-to-ai">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Feed Multiple PDFs to Claude or ChatGPT (Without Hitting the Limit)">
+<meta property="og:description" content="Why zipping your PDFs fails, and a cleaner way to combine multiple sources into one packet the model can actually read.">
+<meta property="og:image" content="/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Feed Multiple PDFs to Claude or ChatGPT">
+<meta name="twitter:description" content="Hitting the file limit with multiple PDFs? A cleaner way to combine them into one packet.">
+<meta name="twitter:image" content="/og.png">
+<style>
+  :root{
+    --bg:#F4F5F3;--surface:#FFFFFF;--ink:#1A2B3A;--muted:#6B7785;--line:#DFE2DE;
+    --accent:#2F6F6A;--accent-soft:#E1EEEB;--accent-ring:#3E8A83;
+    --mono:ui-monospace,"SF Mono","JetBrains Mono","Menlo",monospace;
+    --sans:system-ui,-apple-system,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;line-height:1.7}
+  a{color:var(--accent)}
+  .topbar{max-width:720px;margin:0 auto;padding:20px 22px 0}
+  .topbar a{font-family:var(--mono);font-size:13px;color:var(--muted);text-decoration:none}
+  .topbar a:hover{color:var(--ink)}
+  article{max-width:680px;margin:0 auto;padding:26px 22px 40px}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent);margin:0 0 10px}
+  h1{font-size:32px;line-height:1.18;letter-spacing:-.02em;margin:0 0 12px}
+  .byline{font-family:var(--mono);font-size:13px;color:var(--muted);margin:0 0 26px}
+  article p{font-size:18px;margin:0 0 18px}
+  article h2{font-size:21px;letter-spacing:-.01em;margin:34px 0 12px}
+  article ul{font-size:18px;padding-left:1.1em;margin:0 0 18px}
+  article li{margin:0 0 10px}
+  article li b{color:var(--ink)}
+  blockquote{margin:0 0 20px;background:var(--surface);border:1px solid var(--line);
+    border-left:3px solid var(--accent);border-radius:10px;padding:16px 18px;
+    font-size:16px;color:var(--ink)}
+  .cta{background:var(--surface);border:1px solid var(--accent-ring);border-radius:14px;
+    padding:22px;margin:30px 0}
+  .cta h3{margin:0 0 8px;font-size:18px}
+  .cta p{font-size:16px;color:var(--muted);margin:0 0 16px}
+  .cta a.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;
+    font-weight:600;font-size:15px;padding:12px 20px;border-radius:9px}
+  .cta a.btn:hover{background:#255a55}
+  .cta .fineprint{display:block;margin-top:10px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+  .related{margin-top:14px;font-size:16px;color:var(--muted)}
+  .end{margin-top:34px;padding-top:20px;border-top:1px solid var(--line);
+    font-family:var(--mono);font-size:12px;color:var(--muted);line-height:1.7}
+  @media (max-width:560px){ h1{font-size:24px} article p,article ul{font-size:17px} }
+</style>
+</head>
+<body>
+  <div class="topbar"><a href="/">← PDF Source Prep</a></div>
+  <article>
+    <p class="kicker">Guide</p>
+    <h1>How to Feed Multiple PDFs to Claude or ChatGPT (Without Hitting the Limit)</h1>
+    <p class="byline">A 5-minute read</p>
+
+    <p>You've got five papers and two book chapters open, you want the AI to work across all of them at once — and the app tells you that's too many files, or the upload is too big, or it only seems to "read" the first couple. Working from multiple PDFs is where these tools get genuinely useful, and it's also where they push back hardest.</p>
+
+    <p>The short version: <b>don't hand over the raw files.</b> Pull the pages that matter from each one, combine them into a single small packet, and keep the filenames so you can still tell the sources apart. Here's why, and how.</p>
+
+    <h2>Why you hit the wall</h2>
+    <p>Two limits stack up when you add files:</p>
+    <ul>
+      <li><b>A cap on how many files you can attach.</b> The chat apps limit attachments per message, so a stack of separate PDFs gets rejected before the model even looks at them.</li>
+      <li><b>A cap on how much it can actually read.</b> Even if the files upload, everything has to fit in the model's context window. Several full documents rarely do — so it silently reads part and ignores the rest.</li>
+    </ul>
+
+    <h2>Why "just zip them" doesn't work</h2>
+    <p>The obvious workaround is to zip everything into one archive and upload that. It usually backfires: the model can't reliably open a zip and pull the documents out of it, so you either get an error or a vague answer based on whatever it managed to extract. One archive isn't the same as one readable document.</p>
+
+    <h2>The approach that works: trim, then combine</h2>
+    <p>Instead of shrinking the <em>number</em> of files, shrink what's <em>inside</em> them:</p>
+    <ul>
+      <li><b>Take only the relevant pages from each source.</b> You almost never need all 40 pages of a paper — you need three. Pulling just those is what makes several sources fit at once. (Same idea as when <a href="/blog/pdf-too-long-for-chatgpt">a single PDF is too long</a>.)</li>
+      <li><b>Combine them into one small packet</b> — or a handful of trimmed PDFs, well under the file cap.</li>
+      <li><b>Keep the original filenames.</b> This is the part people skip, and it matters: the filename is how you and the model tell the sources apart. Merge five papers into one nameless blob and every citation collapses into "the document" — useless.</li>
+    </ul>
+
+    <h2>Keep citations straight across sources</h2>
+    <p>With several sources in play, be explicit about attribution in your prompt:</p>
+    <blockquote>These pages come from several sources; the filename marks each one. When you cite, name the source it came from and the page number printed on the page. If two sources disagree, point out the disagreement rather than blending them. If a claim isn't in the sources, say so.</blockquote>
+    <p>That keeps the model from quietly merging five papers into one averaged-out answer — and it means every claim traces back to a specific source you can check. (More on stopping invented page numbers <a href="/blog/chatgpt-making-up-citations">here</a>.)</p>
+
+    <div class="cta">
+      <h3>Do it in a couple of clicks</h3>
+      <p>PDF Source Prep lets you load as many PDFs as you like, pick the pages you need from each, and export them as one packet — filenames intact — with a citation prompt ready for Claude or ChatGPT. It runs entirely in your browser; nothing is uploaded.</p>
+      <a class="btn" href="/">Try PDF Source Prep — free</a>
+      <span class="fineprint">No sign-up · 100% in your browser</span>
+    </div>
+
+    <h2>In one line</h2>
+    <p>Don't fight the file limit with a zip. Trim each source to the pages that matter, combine them into one small packet with the filenames kept, and tell the model to cite each source by name. Several books' worth of research suddenly fits in a single conversation.</p>
+
+    <p class="related">Related: <a href="/blog/pdf-too-long-for-chatgpt">When ChatGPT says your PDF is too long</a> · <a href="/blog/chatgpt-making-up-citations">Why AI invents page numbers</a>.</p>
+
+    <div class="end">
+      PDF Source Prep · a free, browser-only tool for prepping PDFs for Claude and ChatGPT.<br>
+      Your files never leave your browser.
+    </div>
+  </article>
+</body>
+</html>
