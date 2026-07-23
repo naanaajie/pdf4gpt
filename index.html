@@ -83,6 +83,39 @@ https://github.com/nodeca/pako/blob/main/LICENSE
     --mono:ui-monospace,"SF Mono","JetBrains Mono","Menlo",monospace;
     --sans:system-ui,-apple-system,"Segoe UI","Helvetica Neue",Arial,sans-serif;
   }
+  /* ===== SHARED SIDEBAR — keep in sync across all tools ===== */
+  .toolnav{position:fixed;left:0;top:0;bottom:0;width:220px;overflow-y:auto;
+    background:var(--surface);border-right:1px solid var(--line);
+    padding:20px 14px;z-index:40}
+  .toolnav-brand{font-family:var(--mono);font-size:12px;color:var(--muted);
+    text-transform:uppercase;letter-spacing:.04em;margin:0 0 14px}
+  .toolnav ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px}
+  .toolnav-item a{display:flex;gap:10px;align-items:flex-start;padding:9px 10px;
+    border-radius:8px;text-decoration:none;color:var(--ink)}
+  .toolnav-item a:hover{background:var(--accent-soft)}
+  .toolnav-item a:focus-visible{outline:2px solid var(--accent-ring);outline-offset:2px}
+  .toolnav-item.is-current a{background:var(--accent-soft)}
+  .toolnav-icon{flex:0 0 auto;width:22px;height:22px;border-radius:6px;background:var(--accent);
+    color:#fff;font:700 12px/22px var(--mono);text-align:center}
+  .toolnav-name{display:block;font-size:13px;font-weight:600;color:var(--ink)}
+  .toolnav-item.is-current .toolnav-name{color:var(--accent)}
+  .toolnav-blurb{display:block;font-family:var(--mono);font-size:11px;color:var(--muted);
+    margin-top:2px;line-height:1.35}
+  .toolnav-foot{font-family:var(--mono);font-size:10px;color:var(--muted);
+    margin-top:16px;padding-top:12px;border-top:1px solid var(--line)}
+  @media (min-width:901px){ body{padding-left:220px} }
+  @media (max-width:900px){
+    .toolnav{position:static;width:auto;height:auto;border-right:none;
+      border-bottom:1px solid var(--line);padding:10px 14px;overflow:visible}
+    .toolnav-brand,.toolnav-foot{display:none}
+    .toolnav ul{flex-direction:row;overflow-x:auto;gap:8px;-webkit-overflow-scrolling:touch}
+    .toolnav-item{flex:0 0 auto}
+    .toolnav-item a{flex-direction:row;align-items:center;padding:7px 10px;
+      border:1px solid var(--line);border-radius:999px;white-space:nowrap}
+    .toolnav-blurb{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){ .toolnav{scroll-behavior:auto} }
+  /* ===== /SHARED SIDEBAR ===== */
   *{box-sizing:border-box}
   html,body{margin:0}
   body{background:var(--bg);color:var(--ink);font-family:var(--sans);
@@ -277,6 +310,35 @@ https://github.com/nodeca/pako/blob/main/LICENSE
 </style>
 </head>
 <body>
+<!-- ===== SHARED SIDEBAR — keep in sync across all tools ===== -->
+<aside class="toolnav" aria-label="Tools">
+  <p class="toolnav-brand">PDF tools</p>
+  <nav aria-label="Tools"><ul id="toolnavList"></ul></nav>
+  <p class="toolnav-foot">Everything runs in your browser</p>
+</aside>
+<script>
+(function(){
+  var TOOLS = [
+    {href:"index.html", name:"PDF Source Prep", blurb:"Pick pages, bundle a source packet.", icon:"P"},
+    {href:"pdf-note-margins.html", name:"PDF Note Margins", blurb:"Add ruled margins for handwritten notes.", icon:"M"},
+    {href:"pdf-unroll.html", name:"PDF Unroll", blurb:"Cut one tall page into printable sheets.", icon:"U"}
+  ];
+  var here = location.pathname.split("/").pop() || "index.html";
+  var list = document.getElementById("toolnavList");
+  TOOLS.forEach(function(t){
+    var current = t.href === here;
+    var li = document.createElement("li");
+    li.className = "toolnav-item" + (current ? " is-current" : "");
+    li.innerHTML =
+      '<a href="' + t.href + '"' + (current ? ' aria-current="page"' : '') + '>' +
+      '<span class="toolnav-icon" aria-hidden="true">' + t.icon + '</span>' +
+      '<span><span class="toolnav-name">' + t.name + '</span>' +
+      '<span class="toolnav-blurb">' + t.blurb + '</span></span></a>';
+    list.appendChild(li);
+  });
+})();
+</script>
+<!-- ===== /SHARED SIDEBAR ===== -->
 <div class="wrap">
   <header class="hero">
     <p class="eyebrow">PDF Source Prep</p>
