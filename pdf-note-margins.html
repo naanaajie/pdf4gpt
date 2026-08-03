@@ -272,6 +272,8 @@ https://github.com/nodeca/pako/blob/main/LICENSE
   .btn-sm:disabled{opacity:.4;cursor:not-allowed}
 
   footer{color:var(--muted);font-size:12px;text-align:center;margin-top:36px;font-family:var(--mono)}
+  footer a{color:var(--muted);text-decoration:none}
+  footer a:hover{color:var(--accent)}
 
   @media (max-width:900px){ #editor{grid-template-columns:1fr} }
   @media (max-width:640px){ .steps{grid-template-columns:1fr} .hero h1{font-size:24px} }
@@ -474,7 +476,9 @@ https://github.com/nodeca/pako/blob/main/LICENSE
 
   <footer>
     Your files never leave your browser — all processing happens on your device.<br>
-    PDF Note Margins · built with pdf-lib, pdf.js and JSZip
+    PDF Note Margins · built with pdf-lib, pdf.js and JSZip<br>
+    <!-- SITE FOOTER LINKS — keep in sync across all pages -->
+    <a href="/privacy-policy">Privacy</a> · <a href="/about">About</a> · <a href="/contact">Contact</a> · <a href="/blog">Blog</a>
   </footer>
 </div>
 <script>
