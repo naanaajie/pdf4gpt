@@ -7,6 +7,7 @@
 <title>About — PDF Source Prep</title>
 <meta name="description" content="PDF Source Prep is a small set of free, browser-only PDF tools — pick pages for AI chat tools, add note margins, or unroll one long page into printable sheets. Nothing is ever uploaded.">
 <link rel="canonical" href="https://www.mysolotools.com/about">
+<meta property="og:url" content="https://www.mysolotools.com/about">
 <meta property="og:type" content="website">
 <meta property="og:title" content="About — PDF Source Prep">
 <meta property="og:description" content="A small set of free, browser-only PDF tools. Nothing is ever uploaded.">
@@ -26,9 +27,35 @@
   body{background:var(--bg);color:var(--ink);font-family:var(--sans);
     -webkit-font-smoothing:antialiased;line-height:1.7}
   a{color:var(--accent)}
-  .topbar{max-width:720px;margin:0 auto;padding:20px 22px 0}
-  .topbar a{font-family:var(--mono);font-size:13px;color:var(--muted);text-decoration:none}
-  .topbar a:hover{color:var(--ink)}
+  /* ===== SITE NAV — keep in sync across all pages ===== */
+  .sitenav{position:sticky;top:0;z-index:60;background:var(--surface);
+    border-bottom:1px solid var(--line)}
+  .sitenav-inner{max-width:1080px;margin:0 auto;padding:0 20px;height:56px;
+    display:flex;align-items:center;gap:20px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .sitenav-brand{font-family:var(--mono);font-size:14px;font-weight:700;color:var(--ink);
+    text-decoration:none;white-space:nowrap;flex:0 0 auto}
+  .sitenav ul{list-style:none;margin:0;padding:0;display:flex;gap:2px;flex:0 0 auto}
+  .sitenav-item a{display:block;padding:8px 12px;border-radius:8px;text-decoration:none;
+    color:var(--muted);font-size:14px;white-space:nowrap}
+  .sitenav-item a:hover{color:var(--ink);background:var(--bg)}
+  .sitenav-item a:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+  .sitenav-item a[aria-current="page"]{color:var(--ink);background:var(--bg);font-weight:600}
+  @media (prefers-reduced-motion:reduce){ .sitenav-inner{scroll-behavior:auto} }
+  /* ===== /SITE NAV ===== */
+
+  /* ===== SITE FOOTER — keep in sync across all pages ===== */
+  .sitefooter{border-top:1px solid var(--line);background:var(--surface);margin-top:40px}
+  .sitefooter-inner{max-width:1080px;margin:0 auto;padding:28px 20px;
+    display:flex;flex-wrap:wrap;gap:28px;justify-content:space-between}
+  .sitefooter-col h4{font-family:var(--mono);font-size:11px;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--muted);margin:0 0 10px;font-weight:600}
+  .sitefooter-col ul{list-style:none;margin:0;padding:0}
+  .sitefooter-col li{margin:0 0 7px}
+  .sitefooter-col a{color:var(--ink);text-decoration:none;font-size:14px}
+  .sitefooter-col a:hover{color:var(--muted)}
+  .sitefooter-note{max-width:1080px;margin:20px auto 0;padding:16px 20px 0;
+    border-top:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--muted)}
+  /* ===== /SITE FOOTER ===== */
   main{max-width:680px;margin:0 auto;padding:26px 22px 48px}
   .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;
     color:var(--accent);margin:0 0 10px}
@@ -43,7 +70,20 @@
 </style>
 </head>
 <body>
-  <div class="topbar"><a href="/">← PDF Source Prep</a></div>
+<!-- ===== SITE NAV — keep in sync across all pages ===== -->
+<nav class="sitenav" aria-label="Main">
+  <div class="sitenav-inner">
+    <a class="sitenav-brand" href="/">mysolotools</a>
+    <ul>
+      <li class="sitenav-item"><a href="/">Source Prep</a></li>
+      <li class="sitenav-item"><a href="/pdf-unroll">Unroll</a></li>
+      <li class="sitenav-item"><a href="/pdf-note-margins">Note Margins</a></li>
+      <li class="sitenav-item"><a href="/blog">Blog</a></li>
+      <li class="sitenav-item"><a href="/about" aria-current="page">About</a></li>
+    </ul>
+  </div>
+</nav>
+<!-- ===== /SITE NAV ===== -->
   <main>
     <p class="kicker">About</p>
     <h1>About PDF Source Prep</h1>
@@ -66,10 +106,37 @@
 
     <div class="end">
       PDF Source Prep · a free, browser-only tool for prepping PDFs for Claude and ChatGPT.<br>
-      Your files never leave your browser.<br>
-      <!-- SITE FOOTER LINKS — keep in sync across all pages -->
-      <a href="/privacy-policy">Privacy</a> · <a href="/about">About</a> · <a href="/contact">Contact</a> · <a href="/blog">Blog</a>
+      Your files never leave your browser.
     </div>
   </main>
+<!-- ===== SITE FOOTER — keep in sync across all pages ===== -->
+<footer class="sitefooter">
+  <div class="sitefooter-inner">
+    <div class="sitefooter-col">
+      <h4>Tools</h4>
+      <ul>
+        <li><a href="/">PDF Source Prep</a></li>
+        <li><a href="/pdf-unroll">PDF Unroll</a></li>
+        <li><a href="/pdf-note-margins">PDF Note Margins</a></li>
+      </ul>
+    </div>
+    <div class="sitefooter-col">
+      <h4>Content</h4>
+      <ul>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="sitefooter-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="/privacy-policy">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="sitefooter-note">mysolotools.com · free, browser-only tools · nothing is ever uploaded</p>
+</footer>
+<!-- ===== /SITE FOOTER ===== -->
 </body>
 </html>

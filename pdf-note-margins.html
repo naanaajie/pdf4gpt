@@ -7,7 +7,7 @@
 <title>Add note-taking margins to any PDF — for GoodNotes, Notability &amp; print</title>
 <meta name="description" content="Add blank margins to every page of a PDF so you have room to handwrite notes in Notability, GoodNotes or OneNote. Runs 100% in your browser — nothing is uploaded.">
 <link rel="canonical" href="https://www.mysolotools.com/pdf-note-margins">
-<!-- Social preview. After deploying, replace /og-margins.png with your absolute URL and add <meta property="og:url"> for best results. -->
+<meta property="og:url" content="https://www.mysolotools.com/pdf-note-margins">
 <meta property="og:type" content="website">
 <meta property="og:title" content="PDF Note Margins">
 <meta property="og:description" content="Add blank writing space beside every slide, then import into Notability or GoodNotes. 100% in your browser.">
@@ -88,36 +88,37 @@ https://github.com/nodeca/pako/blob/main/LICENSE
   html,body{margin:0}
   body{background:var(--bg);color:var(--ink);font-family:var(--sans);
     font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
-  .wrap{flex:1 1 auto;max-width:1000px;margin:0;padding:32px 20px 120px}
+  .wrap{max-width:1080px;margin:0 auto;padding:32px 20px 120px}
 
-  /* ===== SHARED TOP NAV + AD RAIL — keep in sync across all tools ===== */
-  .toolbar{position:sticky;top:0;z-index:60;background:var(--surface);
-    border-bottom:1px solid var(--line);display:flex;align-items:center;
-    gap:16px;padding:0 20px;height:56px;overflow-x:auto;-webkit-overflow-scrolling:touch}
-  .toolbar-brand{font-family:var(--mono);font-size:12px;color:var(--muted);
-    text-transform:uppercase;letter-spacing:.04em;white-space:nowrap;flex:0 0 auto}
-  .toolbar ul{list-style:none;margin:0;padding:0;display:flex;gap:4px;flex:0 0 auto}
-  .toolbar-item a{display:flex;gap:8px;align-items:center;padding:8px 12px;
-    border-radius:8px;text-decoration:none;color:var(--ink);white-space:nowrap}
-  .toolbar-item a:hover{background:var(--accent-soft)}
-  .toolbar-item a:focus-visible{outline:2px solid var(--accent-ring);outline-offset:2px}
-  .toolbar-item.is-current a{background:var(--accent-soft)}
-  .toolbar-icon{flex:0 0 auto;width:20px;height:20px;border-radius:6px;background:var(--accent);
-    color:#fff;font:700 11px/20px var(--mono);text-align:center}
-  .toolbar-name{font-size:13px;font-weight:600;color:var(--ink)}
-  .toolbar-item.is-current .toolbar-name{color:var(--accent)}
-  .toolbar-foot{font-family:var(--mono);font-size:10px;color:var(--muted);
-    white-space:nowrap;margin-left:auto;flex:0 0 auto;padding-left:16px}
-  @media (max-width:640px){ .toolbar-foot{display:none} }
-  @media (prefers-reduced-motion:reduce){ .toolbar{scroll-behavior:auto} }
-  .shell{max-width:1440px;margin:0 auto;display:flex;align-items:flex-start;gap:32px}
-  #ad-rail{order:-1;flex:0 0 300px;width:300px;position:sticky;top:76px;
-    margin-top:32px;padding:16px;min-height:250px;
-    background:var(--surface);border:1px solid var(--line);border-radius:12px;
-    display:flex;align-items:center;justify-content:center;
-    font-family:var(--mono);font-size:12px;color:var(--muted)}
-  @media (max-width:1100px){ #ad-rail{display:none} }
-  /* ===== /SHARED TOP NAV + AD RAIL ===== */
+  /* ===== SITE NAV — keep in sync across all pages ===== */
+  .sitenav{position:sticky;top:0;z-index:60;background:var(--surface);
+    border-bottom:1px solid var(--line)}
+  .sitenav-inner{max-width:1080px;margin:0 auto;padding:0 20px;height:56px;
+    display:flex;align-items:center;gap:20px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .sitenav-brand{font-family:var(--mono);font-size:14px;font-weight:700;color:var(--ink);
+    text-decoration:none;white-space:nowrap;flex:0 0 auto}
+  .sitenav ul{list-style:none;margin:0;padding:0;display:flex;gap:2px;flex:0 0 auto}
+  .sitenav-item a{display:block;padding:8px 12px;border-radius:8px;text-decoration:none;
+    color:var(--muted);font-size:14px;white-space:nowrap}
+  .sitenav-item a:hover{color:var(--ink);background:var(--bg)}
+  .sitenav-item a:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+  .sitenav-item a[aria-current="page"]{color:var(--ink);background:var(--bg);font-weight:600}
+  @media (prefers-reduced-motion:reduce){ .sitenav-inner{scroll-behavior:auto} }
+  /* ===== /SITE NAV ===== */
+
+  /* ===== SITE FOOTER — keep in sync across all pages ===== */
+  .sitefooter{border-top:1px solid var(--line);background:var(--surface);margin-top:40px}
+  .sitefooter-inner{max-width:1080px;margin:0 auto;padding:28px 20px;
+    display:flex;flex-wrap:wrap;gap:28px;justify-content:space-between}
+  .sitefooter-col h4{font-family:var(--mono);font-size:11px;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--muted);margin:0 0 10px;font-weight:600}
+  .sitefooter-col ul{list-style:none;margin:0;padding:0}
+  .sitefooter-col li{margin:0 0 7px}
+  .sitefooter-col a{color:var(--ink);text-decoration:none;font-size:14px}
+  .sitefooter-col a:hover{color:var(--muted)}
+  .sitefooter-note{max-width:1080px;margin:20px auto 0;padding:16px 20px 0;
+    border-top:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--muted)}
+  /* ===== /SITE FOOTER ===== */
 
   .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;
     text-transform:uppercase;color:var(--accent);margin:0 0 6px}
@@ -297,35 +298,20 @@ https://github.com/nodeca/pako/blob/main/LICENSE
 </script>
 </head>
 <body>
-<!-- ===== SHARED TOP NAV + AD RAIL — keep in sync across all tools ===== -->
-<header class="toolbar" aria-label="Tools">
-  <span class="toolbar-brand">PDF tools</span>
-  <nav aria-label="Tools"><ul id="toolbarList"></ul></nav>
-  <span class="toolbar-foot">Everything runs in your browser</span>
-</header>
-<script>
-(function(){
-  var TOOLS = [
-    {href:"index.html", name:"PDF Source Prep", icon:"P"},
-    {href:"pdf-note-margins.html", name:"PDF Note Margins", icon:"M"},
-    {href:"pdf-unroll.html", name:"PDF Unroll", icon:"U"}
-  ];
-  var here = location.pathname.split("/").pop() || "index.html";
-  var list = document.getElementById("toolbarList");
-  TOOLS.forEach(function(t){
-    var current = t.href === here;
-    var li = document.createElement("li");
-    li.className = "toolbar-item" + (current ? " is-current" : "");
-    li.innerHTML =
-      '<a href="' + t.href + '"' + (current ? ' aria-current="page"' : '') + '>' +
-      '<span class="toolbar-icon" aria-hidden="true">' + t.icon + '</span>' +
-      '<span class="toolbar-name">' + t.name + '</span></a>';
-    list.appendChild(li);
-  });
-})();
-</script>
-<!-- ===== /SHARED TOP NAV + AD RAIL ===== -->
-<div class="shell">
+<!-- ===== SITE NAV — keep in sync across all pages ===== -->
+<nav class="sitenav" aria-label="Main">
+  <div class="sitenav-inner">
+    <a class="sitenav-brand" href="/">mysolotools</a>
+    <ul>
+      <li class="sitenav-item"><a href="/">Source Prep</a></li>
+      <li class="sitenav-item"><a href="/pdf-unroll">Unroll</a></li>
+      <li class="sitenav-item"><a href="/pdf-note-margins" aria-current="page">Note Margins</a></li>
+      <li class="sitenav-item"><a href="/blog">Blog</a></li>
+      <li class="sitenav-item"><a href="/about">About</a></li>
+    </ul>
+  </div>
+</nav>
+<!-- ===== /SITE NAV ===== -->
 <div class="wrap">
   <header class="hero">
     <p class="eyebrow">PDF Note Margins</p>
@@ -485,13 +471,38 @@ https://github.com/nodeca/pako/blob/main/LICENSE
 
   <footer>
     Your files never leave your browser — all processing happens on your device.<br>
-    PDF Note Margins · built with pdf-lib, pdf.js and JSZip<br>
-    <!-- SITE FOOTER LINKS — keep in sync across all pages -->
-    <a href="/privacy-policy">Privacy</a> · <a href="/about">About</a> · <a href="/contact">Contact</a> · <a href="/blog">Blog</a>
+    PDF Note Margins · built with pdf-lib, pdf.js and JSZip
   </footer>
 </div>
-<aside id="ad-rail" aria-label="Advertisement">Free, no-upload browser tools for PDFs and content</aside>
-</div>
+<!-- ===== SITE FOOTER — keep in sync across all pages ===== -->
+<footer class="sitefooter">
+  <div class="sitefooter-inner">
+    <div class="sitefooter-col">
+      <h4>Tools</h4>
+      <ul>
+        <li><a href="/">PDF Source Prep</a></li>
+        <li><a href="/pdf-unroll">PDF Unroll</a></li>
+        <li><a href="/pdf-note-margins">PDF Note Margins</a></li>
+      </ul>
+    </div>
+    <div class="sitefooter-col">
+      <h4>Content</h4>
+      <ul>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="sitefooter-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="/privacy-policy">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="sitefooter-note">mysolotools.com · free, browser-only tools · nothing is ever uploaded</p>
+</footer>
+<!-- ===== /SITE FOOTER ===== -->
 <script>
 /* pdf.js needs its worker file sitting next to this page.
    Copy pdf.worker.min.js into the same folder as this index.html. */
