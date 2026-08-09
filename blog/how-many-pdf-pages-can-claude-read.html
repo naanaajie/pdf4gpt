@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20rx%3D%277%27%20fill%3D%27%232F6F6A%27%2F%3E%3Ctext%20x%3D%2716%27%20y%3D%2722.5%27%20font-family%3D%27-apple-system%2CSegoe%20UI%2CHelvetica%2CArial%2Csans-serif%27%20font-size%3D%2720%27%20font-weight%3D%27700%27%20fill%3D%27%23ffffff%27%20text-anchor%3D%27middle%27%3EP%3C%2Ftext%3E%3C%2Fsvg%3E">
+<title>How Many PDF Pages Can Claude Read?</title>
+<meta name="description" content="Claude reads PDFs up to 600 pages via the API (100 on smaller context windows) and about 100 pages in the Claude.ai chat app — but the context window is usually the real limit. Here's how it works and what to do with large PDFs.">
+<link rel="canonical" href="https://www.mysolotools.com/blog/how-many-pdf-pages-can-claude-read">
+<meta property="og:url" content="https://www.mysolotools.com/blog/how-many-pdf-pages-can-claude-read">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How Many PDF Pages Can Claude Read?">
+<meta property="og:description" content="Claude reads PDFs up to 600 pages via the API (100 on smaller context windows) and about 100 pages in the Claude.ai chat app — but the context window is usually the real limit.">
+<meta property="og:image" content="/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How Many PDF Pages Can Claude Read?">
+<meta name="twitter:description" content="Claude reads PDFs up to 600 pages via the API (100 on smaller context windows) and about 100 pages in the Claude.ai chat app.">
+<meta name="twitter:image" content="/og.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How Many PDF Pages Can Claude Read?",
+  "description": "Claude reads PDFs up to 600 pages via the API (100 on smaller context windows) and about 100 pages in the Claude.ai chat app — but the context window is usually the real limit. Here's how it works and what to do with large PDFs.",
+  "url": "https://www.mysolotools.com/blog/how-many-pdf-pages-can-claude-read",
+  "datePublished": "2026-08-09",
+  "dateModified": "2026-08-09",
+  "author": { "@type": "Organization", "name": "MySoloTools" },
+  "publisher": { "@type": "Organization", "name": "MySoloTools" },
+  "mainEntityOfPage": "https://www.mysolotools.com/blog/how-many-pdf-pages-can-claude-read"
+}
+</script>
+<style>
+  :root{
+    --bg:#F4F5F3;--surface:#FFFFFF;--ink:#1A2B3A;--muted:#6B7785;--line:#DFE2DE;
+    --accent:#2F6F6A;--accent-soft:#E1EEEB;--accent-ring:#3E8A83;
+    --mono:ui-monospace,"SF Mono","JetBrains Mono","Menlo",monospace;
+    --sans:system-ui,-apple-system,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;line-height:1.7}
+  a{color:var(--accent)}
+  /* ===== SITE NAV — keep in sync across all pages ===== */
+  .sitenav{position:sticky;top:0;z-index:60;background:var(--surface);
+    border-bottom:1px solid var(--line)}
+  .sitenav-inner{max-width:1080px;margin:0 auto;padding:0 20px;height:56px;
+    display:flex;align-items:center;gap:20px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .sitenav-brand{font-family:var(--mono);font-size:14px;font-weight:700;color:var(--ink);
+    text-decoration:none;white-space:nowrap;flex:0 0 auto}
+  .sitenav ul{list-style:none;margin:0;padding:0;display:flex;gap:2px;flex:0 0 auto}
+  .sitenav-item a{display:block;padding:8px 12px;border-radius:8px;text-decoration:none;
+    color:var(--muted);font-size:14px;white-space:nowrap}
+  .sitenav-item a:hover{color:var(--ink);background:var(--bg)}
+  .sitenav-item a:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+  .sitenav-item a[aria-current="page"]{color:var(--ink);background:var(--bg);font-weight:600}
+  @media (prefers-reduced-motion:reduce){ .sitenav-inner{scroll-behavior:auto} }
+  /* ===== /SITE NAV ===== */
+
+  /* ===== SITE FOOTER — keep in sync across all pages ===== */
+  .sitefooter{border-top:1px solid var(--line);background:var(--surface);margin-top:40px}
+  .sitefooter-inner{max-width:1080px;margin:0 auto;padding:28px 20px;
+    display:flex;flex-wrap:wrap;gap:28px;justify-content:space-between}
+  .sitefooter-col h4{font-family:var(--mono);font-size:11px;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--muted);margin:0 0 10px;font-weight:600}
+  .sitefooter-col ul{list-style:none;margin:0;padding:0}
+  .sitefooter-col li{margin:0 0 7px}
+  .sitefooter-col a{color:var(--ink);text-decoration:none;font-size:14px}
+  .sitefooter-col a:hover{color:var(--muted)}
+  .sitefooter-note{max-width:1080px;margin:20px auto 0;padding:16px 20px 0;
+    border-top:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--muted)}
+  /* ===== /SITE FOOTER ===== */
+  article{max-width:680px;margin:0 auto;padding:26px 22px 40px}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent);margin:0 0 10px}
+  h1{font-size:32px;line-height:1.18;letter-spacing:-.02em;margin:0 0 12px}
+  .byline{font-family:var(--mono);font-size:13px;color:var(--muted);margin:0 0 26px}
+  article p{font-size:18px;margin:0 0 18px}
+  article h2{font-size:21px;letter-spacing:-.01em;margin:34px 0 12px}
+  article ul{font-size:18px;padding-left:1.1em;margin:0 0 18px}
+  article li{margin:0 0 10px}
+  article li b{color:var(--ink)}
+  blockquote{margin:0 0 20px;background:var(--surface);border:1px solid var(--line);
+    border-left:3px solid var(--accent);border-radius:10px;padding:16px 18px;
+    font-size:16px;color:var(--ink)}
+  .cta{background:var(--surface);border:1px solid var(--accent-ring);border-radius:14px;
+    padding:22px;margin:30px 0}
+  .cta h3{margin:0 0 8px;font-size:18px}
+  .cta p{font-size:16px;color:var(--muted);margin:0 0 16px}
+  .cta a.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;
+    font-weight:600;font-size:15px;padding:12px 20px;border-radius:9px}
+  .cta a.btn:hover{background:#255a55}
+  .cta .fineprint{display:block;margin-top:10px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+  .faq p{margin:0 0 6px}
+  .faq p:last-child{margin:0 0 22px}
+  .end{margin-top:34px;padding-top:20px;border-top:1px solid var(--line);
+    font-family:var(--mono);font-size:12px;color:var(--muted);line-height:1.7}
+  @media (max-width:560px){ h1{font-size:26px} article p,article ul{font-size:17px} }
+</style>
+</head>
+<body>
+<!-- ===== SITE NAV — keep in sync across all pages ===== -->
+<nav class="sitenav" aria-label="Main">
+  <div class="sitenav-inner">
+    <a class="sitenav-brand" href="/">mysolotools</a>
+    <ul>
+      <li class="sitenav-item"><a href="/">Source Prep</a></li>
+      <li class="sitenav-item"><a href="/pdf-unroll">Unroll</a></li>
+      <li class="sitenav-item"><a href="/pdf-note-margins">Note Margins</a></li>
+      <li class="sitenav-item"><a href="/blog" aria-current="page">Blog</a></li>
+      <li class="sitenav-item"><a href="/about">About</a></li>
+    </ul>
+  </div>
+</nav>
+<!-- ===== /SITE NAV ===== -->
+  <article>
+    <p class="kicker">Guide</p>
+    <h1>How Many PDF Pages Can Claude Read?</h1>
+    <p class="byline">Last verified: August 2026</p>
+
+    <p><b>Short answer:</b> Through Anthropic's API, Claude accepts a PDF of up to <b>600 pages</b> per request — or <b>100 pages</b> if the request's context window is under 1 million tokens — with a <b>32 MB</b> total request-size cap. In the Claude.ai chat app, you can practically upload PDFs of around <b>100 pages / ~30 MB per file</b>, and up to 20 files per conversation.</p>
+
+    <p>But page count is rarely the wall you actually hit. The <b>context window</b> usually is. Here's what that means, and what to do when your document is too big.</p>
+
+    <h2>The limits, by where you're using Claude</h2>
+    <p><b>If you're a developer using the API:</b> the documented ceiling is <b>32 MB per request</b> and <b>up to 600 pages</b> — but that 600 only applies when your request's context window is 1 million tokens or larger. On a smaller context window, the cap drops to <b>100 pages</b>. Encrypted or password-protected PDFs aren't supported at all.</p>
+    <p><b>If you're using Claude.ai (the chat interface):</b> in day-to-day use you'll find PDFs work best under roughly <b>100 pages and ~30 MB per file</b>, with a limit of about 20 files per conversation. Go past the file-size or page ceiling and the upload is rejected before Claude ever sees it.</p>
+    <p>These numbers come from Anthropic's own PDF documentation and can change as models evolve, so treat them as current-as-of-mid-2026 rather than permanent. When in doubt, the API limits are the officially documented ones.</p>
+
+    <h2>Why page count is the wrong question</h2>
+    <p>Here's the part most guides miss: <b>you can be well under the page limit and still get stuck.</b></p>
+    <p>When you hand Claude a PDF, every page is converted into an image <em>and</em> has its text extracted — both are sent to the model together. Each page typically costs somewhere between <b>1,500 and 3,000 tokens</b> just for the text, plus additional tokens for the page image. A dense document — small fonts, packed tables, lots of graphics — can fill the entire context window long before it reaches the page cap.</p>
+    <p>So the practical limit isn't "100 pages" or "600 pages." It's <b>how much of Claude's context window your specific PDF eats up.</b> A clean, text-light 200-page report might fit fine. A 40-page slide deck full of dense charts might choke. This is also why Claude can fail on a large PDF <em>even when the page count looks safe.</em></p>
+
+    <h2>What actually happens when you go over</h2>
+    <p>Two different failure modes, depending on which ceiling you hit:</p>
+    <ul>
+      <li><b>File too big / too many pages:</b> you get a rejection at upload — the file simply won't process.</li>
+      <li><b>Context window overflow:</b> the file uploads, but the combined tokens exceed what Claude can hold at once, so the request fails or the document can't be fully read.</li>
+    </ul>
+    <p>The fix for both is the same idea: <b>give Claude less, but the right less.</b></p>
+
+    <h2>How to get a large PDF into Claude anyway</h2>
+    <p>You don't need the whole document. You need the pages that matter, in a form that fits. Three approaches, in order of how often they help:</p>
+    <p><b>1. Send only the pages you actually need.</b> Most of the time you're asking Claude about a handful of pages inside a big file — a specific section of a contract, three slides, the results in a paper. Pull just those pages out and hand Claude a clean, focused packet. That's exactly what <a href="/">PDF Source Prep</a> does: pick the pages you want across one or more PDFs, bundle them with a citation-ready prompt, and export a tidy source packet — all in your browser.</p>
+    <p><b>2. Split a long document into parts.</b> If you genuinely need all of it, break it into chunks Claude can take one at a time. For unusually tall single-page PDFs (long web captures, chat exports, receipts), <a href="/pdf-unroll">PDF Unroll</a> slices them into clean, page-sized sheets.</p>
+    <p><b>3. Shrink the file.</b> If you're bumping the 30 MB size cap rather than the page cap, the weight is usually embedded images. Downsampling them can bring a rejected file back under the limit.</p>
+
+    <div class="cta">
+      <h3>Prep the pages before you upload</h3>
+      <p>PDF Source Prep lets you pick just the pages you need from one or more PDFs and export a clean, citation-ready packet — sized to fit, not just trimmed at random. It runs entirely in your browser; nothing is uploaded.</p>
+      <a class="btn" href="/">Try PDF Source Prep — free</a>
+      <span class="fineprint">No sign-up · 100% in your browser</span>
+    </div>
+
+    <h2>A note on confidential documents</h2>
+    <p>If your PDF is a client contract, a financial statement, or anything under compliance rules, <em>how</em> you split it matters as much as <em>whether</em> you can. Every tool on this site runs <b>100% in your browser — nothing is uploaded to a server, nothing is installed.</b> You trim and prep the file locally, then decide what to hand to Claude. For legal, finance, and healthcare work, that's not a nice-to-have; it's the whole point.</p>
+
+    <h2>Frequently asked questions</h2>
+    <div class="faq">
+      <p><b>Can Claude read a 500-page PDF?</b></p>
+      <p>Via the API on a 1M-token context window, yes — up to 600 pages, size permitting. In the chat app, a 500-page file is over the practical ceiling; split it or extract the sections you need.</p>
+
+      <p><b>Does Claude read the whole PDF or just the first few pages?</b></p>
+      <p>The whole thing, as long as it fits within the size, page, and context limits. Claude doesn't silently truncate to the first pages — if the document is too big, it fails rather than partially reads.</p>
+
+      <p><b>Why does Claude say my PDF is too large even though it's under 100 pages?</b></p>
+      <p>Almost always the context window or the 30 MB size cap, not the page count. Dense pages and embedded images cost far more tokens than plain text, so a short-but-heavy PDF can overflow before a long-but-light one does.</p>
+
+      <p><b>Is it better to paste the text or upload the PDF?</b></p>
+      <p>If you only care about the words (no charts, tables, or layout), pasting text sidesteps the file-size limit entirely and is often lighter on the context window. Upload the PDF when the visual layout matters.</p>
+    </div>
+
+    <p style="margin-top:14px;font-size:16px;color:var(--muted)">Related: <a href="/blog/pdf-too-long-for-chatgpt">My PDF is too long for ChatGPT — what now?</a> · <a href="/blog/chatgpt-making-up-citations">Why ChatGPT makes up citations from your PDFs</a> · <a href="/blog/feed-multiple-pdfs-to-ai">How to feed multiple PDFs to an AI at once</a>.</p>
+
+    <div class="end">
+      Limits described here are based on Anthropic's official PDF documentation and were last verified in August 2026. Anthropic may change these caps as new models ship — check the <a href="https://platform.claude.com/docs/en/build-with-claude/pdf-support" target="_blank" rel="noopener">official PDF support docs</a> for the latest.<br><br>
+      PDF Source Prep · a free, browser-only tool for prepping PDFs for Claude and ChatGPT.<br>
+      Your files never leave your browser.
+    </div>
+  </article>
+<!-- ===== SITE FOOTER — keep in sync across all pages ===== -->
+<footer class="sitefooter">
+  <div class="sitefooter-inner">
+    <div class="sitefooter-col">
+      <h4>Tools</h4>
+      <ul>
+        <li><a href="/">PDF Source Prep</a></li>
+        <li><a href="/pdf-unroll">PDF Unroll</a></li>
+        <li><a href="/pdf-note-margins">PDF Note Margins</a></li>
+      </ul>
+    </div>
+    <div class="sitefooter-col">
+      <h4>Content</h4>
+      <ul>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="sitefooter-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="/privacy-policy">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="sitefooter-note">mysolotools.com · free, browser-only tools · nothing is ever uploaded</p>
+</footer>
+<!-- ===== /SITE FOOTER ===== -->
+</body>
+</html>
