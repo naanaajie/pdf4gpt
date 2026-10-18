@@ -65,11 +65,23 @@
   h1{font-size:32px;line-height:1.18;letter-spacing:-.02em;margin:0 0 12px}
   main p{font-size:17px;margin:0 0 16px;max-width:40em}
   .contactbox{background:var(--surface);border:1px solid var(--accent-ring);border-radius:14px;
-    padding:22px;margin:24px 0}
-  .contactbox a.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;
-    font-weight:600;font-size:16px;padding:12px 20px;border-radius:9px}
-  .contactbox a.btn:hover{background:#255a55}
+    padding:22px;margin:24px 0;max-width:40em}
+  .field{margin-bottom:14px}
+  .field label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+  .field input,.field textarea{width:100%;background:var(--bg);color:var(--ink);
+    border:1px solid var(--line);border-radius:9px;padding:10px 12px;
+    font-family:var(--sans);font-size:15px;resize:vertical}
+  .field input:focus,.field textarea:focus{outline:2px solid var(--accent-ring);outline-offset:1px;border-color:transparent}
+  .botcheck{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+  .contactbox .btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;
+    font-weight:600;font-size:16px;padding:12px 20px;border-radius:9px;border:none;
+    font-family:var(--sans);cursor:pointer}
+  .contactbox .btn:hover{background:#255a55}
+  .contactbox .btn:disabled{opacity:.6;cursor:not-allowed}
   .contactbox .fineprint{display:block;margin-top:12px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+  .formstatus{margin-top:12px;font-size:14px}
+  .formstatus.err{color:#B4472E}
+  .formstatus.ok{color:var(--accent)}
   .end{margin-top:34px;padding-top:20px;border-top:1px solid var(--line);
     font-family:var(--mono);font-size:12px;color:var(--muted);line-height:1.7}
   @media (max-width:560px){ h1{font-size:26px} main p{font-size:16px} }
@@ -87,8 +99,26 @@
     <p>Have a question, found a bug, or have feedback on a tool? Reach out — we read every message.</p>
 
     <div class="contactbox">
-      <a class="btn" href="mailto:canvasgoldcn@gmail.com">canvasgoldcn@gmail.com</a>
-      <span class="fineprint">We typically reply within a few business days.</span>
+      <form id="contactForm">
+        <input type="hidden" name="access_key" value="f68d1a03-5af5-4310-8a6d-30c6f225251f">
+        <input type="hidden" name="subject" value="New message from mysolotools.com contact form">
+        <input type="hidden" name="from_name" value="mysolotools contact form">
+        <label class="botcheck" for="botcheck">Leave this field empty</label>
+        <input class="botcheck" type="checkbox" id="botcheck" name="botcheck" tabindex="-1" autocomplete="off">
+
+        <div class="field">
+          <label for="email">Your email</label>
+          <input type="email" id="email" name="email" required placeholder="you@example.com">
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required rows="6" placeholder="Question, bug report, or feedback…"></textarea>
+        </div>
+
+        <button class="btn" type="submit">Send message</button>
+      </form>
+      <p class="formstatus" id="formStatus" role="status"></p>
+      <span class="fineprint">Or email me directly at <a href="mailto:canvasgoldcn@gmail.com">canvasgoldcn@gmail.com</a>. I typically reply within a few business days.</span>
     </div>
 
     <div class="end">
@@ -125,5 +155,47 @@
   <p class="sitefooter-note">mysolotools.com · free, browser-only tools · nothing is ever uploaded</p>
 </footer>
 <!-- ===== /SITE FOOTER ===== -->
+<script>
+(() => {
+  const form = document.getElementById("contactForm");
+  const status = document.getElementById("formStatus");
+  const btn = form.querySelector("button[type=submit]");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    status.textContent = ""; status.className = "formstatus";
+    const key = form.access_key.value;
+    if (!key || key === "YOUR_ACCESS_KEY_HERE") {
+      status.textContent = "This form isn't set up yet — email me directly instead.";
+      status.className = "formstatus err";
+      return;
+    }
+    btn.disabled = true;
+    const prevLabel = btn.textContent;
+    btn.textContent = "Sending…";
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Accept": "application/json" },
+        body: new FormData(form),
+      });
+      const data = await res.json();
+      if (data.success) {
+        form.hidden = true;
+        status.textContent = "Thanks — got it. I'll get back to you soon.";
+        status.className = "formstatus ok";
+      } else {
+        throw new Error(data.message || "Something went wrong.");
+      }
+    } catch (err) {
+      status.textContent = "Couldn't send that — please email me directly instead.";
+      status.className = "formstatus err";
+    } finally {
+      btn.disabled = false;
+      btn.textContent = prevLabel;
+    }
+  });
+})();
+</script>
 </body>
 </html>
