@@ -118,7 +118,7 @@
         <button class="btn" type="submit">Send message</button>
       </form>
       <p class="formstatus" id="formStatus" role="status"></p>
-      <span class="fineprint">Or email me directly at <a href="mailto:canvasgoldcn@gmail.com">canvasgoldcn@gmail.com</a>. I typically reply within a few business days.</span>
+      <span class="fineprint">I read every message and usually reply within a few business days.</span>
     </div>
 
     <div class="end">
@@ -166,7 +166,7 @@
     status.textContent = ""; status.className = "formstatus";
     const key = form.access_key.value;
     if (!key || key === "YOUR_ACCESS_KEY_HERE") {
-      status.textContent = "This form isn't set up yet — email me directly instead.";
+      status.textContent = "This form isn't set up yet — please try again later.";
       status.className = "formstatus err";
       return;
     }
@@ -188,7 +188,7 @@
         throw new Error(data.message || "Something went wrong.");
       }
     } catch (err) {
-      status.textContent = "Couldn't send that — please email me directly instead.";
+      status.textContent = "Couldn't send that — please try again in a moment.";
       status.className = "formstatus err";
     } finally {
       btn.disabled = false;
