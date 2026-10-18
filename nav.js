@@ -39,6 +39,7 @@
       '<nav class="sitenav" aria-label="Main">' +
         '<div class="sitenav-inner">' +
           '<a class="sitenav-brand" href="' + NAV.brand.href + '">' + NAV.brand.label + "</a>" +
+          '<span class="sitenav-divider" aria-hidden="true"></span>' +
           renderGroup(NAV.tools, path, "sitenav-group-tools") +
           renderGroup(NAV.content, path, "sitenav-group-content") +
         "</div>" +
