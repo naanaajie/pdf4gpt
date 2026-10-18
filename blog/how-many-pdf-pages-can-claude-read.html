@@ -47,9 +47,11 @@
     border-bottom:1px solid var(--line)}
   .sitenav-inner{max-width:1080px;margin:0 auto;padding:0 20px;height:56px;
     display:flex;align-items:center;gap:20px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  #sitenav-root:empty{min-height:56px}
   .sitenav-brand{font-family:var(--mono);font-size:14px;font-weight:700;color:var(--ink);
     text-decoration:none;white-space:nowrap;flex:0 0 auto}
   .sitenav ul{list-style:none;margin:0;padding:0;display:flex;gap:2px;flex:0 0 auto}
+  .sitenav-group-content{margin-left:auto}
   .sitenav-item a{display:block;padding:8px 12px;border-radius:8px;text-decoration:none;
     color:var(--muted);font-size:14px;white-space:nowrap}
   .sitenav-item a:hover{color:var(--ink);background:var(--bg)}
@@ -101,18 +103,8 @@
 </head>
 <body>
 <!-- ===== SITE NAV — keep in sync across all pages ===== -->
-<nav class="sitenav" aria-label="Main">
-  <div class="sitenav-inner">
-    <a class="sitenav-brand" href="/">mysolotools</a>
-    <ul>
-      <li class="sitenav-item"><a href="/">Source Prep</a></li>
-      <li class="sitenav-item"><a href="/pdf-unroll">Unroll</a></li>
-      <li class="sitenav-item"><a href="/pdf-note-margins">Note Margins</a></li>
-      <li class="sitenav-item"><a href="/blog" aria-current="page">Blog</a></li>
-      <li class="sitenav-item"><a href="/about">About</a></li>
-    </ul>
-  </div>
-</nav>
+<div id="sitenav-root"></div>
+<script src="../nav.js"></script>
 <!-- ===== /SITE NAV ===== -->
   <article>
     <p class="kicker">Guide</p>
@@ -143,14 +135,14 @@
 
     <h2>How to get a large PDF into Claude anyway</h2>
     <p>You don't need the whole document. You need the pages that matter, in a form that fits. Three approaches, in order of how often they help:</p>
-    <p><b>1. Send only the pages you actually need.</b> Most of the time you're asking Claude about a handful of pages inside a big file — a specific section of a contract, three slides, the results in a paper. Pull just those pages out and hand Claude a clean, focused packet. That's exactly what <a href="/">PDF Source Prep</a> does: pick the pages you want across one or more PDFs, bundle them with a citation-ready prompt, and export a tidy source packet — all in your browser.</p>
+    <p><b>1. Send only the pages you actually need.</b> Most of the time you're asking Claude about a handful of pages inside a big file — a specific section of a contract, three slides, the results in a paper. Pull just those pages out and hand Claude a clean, focused packet. That's exactly what <a href="/">Extract PDF Pages</a> does: pick the pages you want across one or more PDFs, bundle them with a citation-ready prompt, and export a tidy source packet — all in your browser.</p>
     <p><b>2. Split a long document into parts.</b> If you genuinely need all of it, break it into chunks Claude can take one at a time. For unusually tall single-page PDFs (long web captures, chat exports, receipts), <a href="/pdf-unroll">PDF Unroll</a> slices them into clean, page-sized sheets.</p>
     <p><b>3. Shrink the file.</b> If you're bumping the 30 MB size cap rather than the page cap, the weight is usually embedded images. Downsampling them can bring a rejected file back under the limit.</p>
 
     <div class="cta">
       <h3>Prep the pages before you upload</h3>
-      <p>PDF Source Prep lets you pick just the pages you need from one or more PDFs and export a clean, citation-ready packet — sized to fit, not just trimmed at random. It runs entirely in your browser; nothing is uploaded.</p>
-      <a class="btn" href="/">Try PDF Source Prep — free</a>
+      <p>Extract PDF Pages lets you pick just the pages you need from one or more PDFs and export a clean, citation-ready packet — sized to fit, not just trimmed at random. It runs entirely in your browser; nothing is uploaded.</p>
+      <a class="btn" href="/">Try Extract PDF Pages — free</a>
       <span class="fineprint">No sign-up · 100% in your browser</span>
     </div>
 
@@ -176,7 +168,7 @@
 
     <div class="end">
       Limits described here are based on Anthropic's official PDF documentation and were last verified in August 2026. Anthropic may change these caps as new models ship — check the <a href="https://platform.claude.com/docs/en/build-with-claude/pdf-support" target="_blank" rel="noopener">official PDF support docs</a> for the latest.<br><br>
-      PDF Source Prep · a free, browser-only tool for prepping PDFs for Claude and ChatGPT.<br>
+      Extract PDF Pages · a free, browser-only tool for prepping PDFs for Claude and ChatGPT.<br>
       Your files never leave your browser.
     </div>
   </article>
@@ -186,7 +178,7 @@
     <div class="sitefooter-col">
       <h4>Tools</h4>
       <ul>
-        <li><a href="/">PDF Source Prep</a></li>
+        <li><a href="/">Extract PDF Pages</a></li>
         <li><a href="/pdf-unroll">PDF Unroll</a></li>
         <li><a href="/pdf-note-margins">PDF Note Margins</a></li>
       </ul>

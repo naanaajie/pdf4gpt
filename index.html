@@ -4,17 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20rx%3D%277%27%20fill%3D%27%232F6F6A%27%2F%3E%3Ctext%20x%3D%2716%27%20y%3D%2722.5%27%20font-family%3D%27-apple-system%2CSegoe%20UI%2CHelvetica%2CArial%2Csans-serif%27%20font-size%3D%2720%27%20font-weight%3D%27700%27%20fill%3D%27%23ffffff%27%20text-anchor%3D%27middle%27%3EP%3C%2Ftext%3E%3C%2Fsvg%3E">
-<title>Prepare any PDF for ChatGPT &amp; Claude — pick pages, keep layout</title>
-<meta name="description" content="Pick just the pages you need from your PDFs, bundle them with a citation-ready prompt, and hand a clean source packet to Claude or ChatGPT. Runs 100% in your browser — nothing is uploaded.">
+<title>Extract Pages from PDF – Free, No Upload | My Solo Tools</title>
+<meta name="description" content="Choose pages or ranges (like 1-5, 12, 20-30) and save them as a new PDF. Send only the part you need to ChatGPT or Claude. Runs in your browser.">
 <link rel="canonical" href="https://www.mysolotools.com/">
 <meta property="og:url" content="https://www.mysolotools.com/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="PDF Source Prep">
-<meta property="og:description" content="Trim your PDFs to just the pages that matter and export a clean, citation-ready packet for Claude or ChatGPT. 100% in your browser.">
+<meta property="og:title" content="Extract Pages from PDF – Free, No Upload | My Solo Tools">
+<meta property="og:description" content="Choose pages or ranges (like 1-5, 12, 20-30) and save them as a new PDF. Send only the part you need to ChatGPT or Claude. Runs in your browser.">
 <meta property="og:image" content="/og.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="PDF Source Prep">
-<meta name="twitter:description" content="Trim your PDFs to just the pages that matter and export a clean, citation-ready packet for Claude or ChatGPT.">
+<meta name="twitter:title" content="Extract Pages from PDF – Free, No Upload | My Solo Tools">
+<meta name="twitter:description" content="Choose pages or ranges (like 1-5, 12, 20-30) and save them as a new PDF. Send only the part you need to ChatGPT or Claude. Runs in your browser.">
 <meta name="twitter:image" content="/og.png">
 <script>/* pdf-lib 1.17.1 (inlined, offline) */
 !function(t,e){"object"==typeof exports&&"undefined"!=typeof module?e(exports):"function"==typeof define&&define.amd?define(["exports"],e):e((t=t||self).PDFLib={})}(this,(function(t){"use strict";
@@ -89,9 +89,11 @@ https://github.com/nodeca/pako/blob/main/LICENSE
     border-bottom:1px solid var(--line)}
   .sitenav-inner{max-width:1080px;margin:0 auto;padding:0 20px;height:56px;
     display:flex;align-items:center;gap:20px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  #sitenav-root:empty{min-height:56px}
   .sitenav-brand{font-family:var(--mono);font-size:14px;font-weight:700;color:var(--ink);
     text-decoration:none;white-space:nowrap;flex:0 0 auto}
   .sitenav ul{list-style:none;margin:0;padding:0;display:flex;gap:2px;flex:0 0 auto}
+  .sitenav-group-content{margin-left:auto}
   .sitenav-item a{display:block;padding:8px 12px;border-radius:8px;text-decoration:none;
     color:var(--muted);font-size:14px;white-space:nowrap}
   .sitenav-item a:hover{color:var(--ink);background:var(--bg)}
@@ -311,37 +313,26 @@ https://github.com/nodeca/pako/blob/main/LICENSE
 {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  "name": "PDF Source Prep",
+  "name": "Extract PDF Pages",
   "url": "https://www.mysolotools.com/",
   "applicationCategory": "UtilityApplication",
   "operatingSystem": "Any",
   "browserRequirements": "Requires a modern browser. Runs entirely on-device; no files are uploaded.",
-  "description": "Pick just the pages you need from your PDFs, bundle them with a citation-ready prompt, and hand a clean source packet to Claude or ChatGPT. Runs 100% in your browser — nothing is uploaded.",
+  "description": "Choose pages or ranges (like 1-5, 12, 20-30) and save them as a new PDF. Send only the part you need to ChatGPT or Claude. Runs in your browser.",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
 }
 </script>
 </head>
 <body>
 <!-- ===== SITE NAV — keep in sync across all pages ===== -->
-<nav class="sitenav" aria-label="Main">
-  <div class="sitenav-inner">
-    <a class="sitenav-brand" href="/">mysolotools</a>
-    <ul>
-      <li class="sitenav-item"><a href="/" aria-current="page">Source Prep</a></li>
-      <li class="sitenav-item"><a href="/pdf-unroll">Unroll</a></li>
-      <li class="sitenav-item"><a href="/pdf-note-margins">Note Margins</a></li>
-      <li class="sitenav-item"><a href="/pdf-watermark">Watermark</a></li>
-      <li class="sitenav-item"><a href="/blog">Blog</a></li>
-      <li class="sitenav-item"><a href="/about">About</a></li>
-    </ul>
-  </div>
-</nav>
+<div id="sitenav-root"></div>
+<script src="nav.js"></script>
 <!-- ===== /SITE NAV ===== -->
 <div class="wrap">
   <header class="hero">
-    <p class="eyebrow">PDF Source Prep</p>
+    <p class="eyebrow">Extract PDF Pages</p>
     <h1>ChatGPT choking on your 300-page PDF?</h1>
-    <p class="lede">Pull out just the pages you need and hand ChatGPT or Claude a clean, citation-ready packet — figures and layout kept intact. Everything runs in your browser; nothing is uploaded.</p>
+    <p class="lede">Pick the pages or page ranges you need and save them as a new PDF. Useful for pulling one chapter out of a textbook or a few sections out of a long report.</p>
     <div class="trust"><span>100% in your browser</span><span>Nothing uploaded</span><span>Free</span></div>
     <div class="hero-cta">
       <button class="btn btn-primary" id="heroPick">Prepare my PDF</button>
@@ -432,7 +423,7 @@ https://github.com/nodeca/pako/blob/main/LICENSE
     <div class="sitefooter-col">
       <h4>Tools</h4>
       <ul>
-        <li><a href="/">PDF Source Prep</a></li>
+        <li><a href="/">Extract PDF Pages</a></li>
         <li><a href="/pdf-unroll">PDF Unroll</a></li>
         <li><a href="/pdf-note-margins">PDF Note Margins</a></li>
         <li><a href="/pdf-watermark">PDF Watermark</a></li>

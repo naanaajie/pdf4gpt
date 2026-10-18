@@ -4,16 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20rx%3D%277%27%20fill%3D%27%232F6F6A%27%2F%3E%3Ctext%20x%3D%2716%27%20y%3D%2722.5%27%20font-family%3D%27-apple-system%2CSegoe%20UI%2CHelvetica%2CArial%2Csans-serif%27%20font-size%3D%2720%27%20font-weight%3D%27700%27%20fill%3D%27%23ffffff%27%20text-anchor%3D%27middle%27%3EP%3C%2Ftext%3E%3C%2Fsvg%3E">
-<title>Privacy Policy — PDF Source Prep</title>
-<meta name="description" content="How PDF Source Prep handles your data. Short version: your PDF files never leave your browser — nothing is ever uploaded.">
+<title>Privacy Policy — mysolotools</title>
+<meta name="description" content="How mysolotools handles your data. Short version: your PDF files never leave your browser — nothing is ever uploaded.">
 <link rel="canonical" href="https://www.mysolotools.com/privacy-policy">
 <meta property="og:url" content="https://www.mysolotools.com/privacy-policy">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Privacy Policy — PDF Source Prep">
-<meta property="og:description" content="How PDF Source Prep handles your data. Your PDF files never leave your browser.">
+<meta property="og:title" content="Privacy Policy — mysolotools">
+<meta property="og:description" content="How mysolotools handles your data. Your PDF files never leave your browser.">
 <meta property="og:image" content="/og.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Privacy Policy — PDF Source Prep">
+<meta name="twitter:title" content="Privacy Policy — mysolotools">
 <meta name="twitter:image" content="/og.png">
 <style>
   :root{
@@ -32,9 +32,11 @@
     border-bottom:1px solid var(--line)}
   .sitenav-inner{max-width:1080px;margin:0 auto;padding:0 20px;height:56px;
     display:flex;align-items:center;gap:20px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  #sitenav-root:empty{min-height:56px}
   .sitenav-brand{font-family:var(--mono);font-size:14px;font-weight:700;color:var(--ink);
     text-decoration:none;white-space:nowrap;flex:0 0 auto}
   .sitenav ul{list-style:none;margin:0;padding:0;display:flex;gap:2px;flex:0 0 auto}
+  .sitenav-group-content{margin-left:auto}
   .sitenav-item a{display:block;padding:8px 12px;border-radius:8px;text-decoration:none;
     color:var(--muted);font-size:14px;white-space:nowrap}
   .sitenav-item a:hover{color:var(--ink);background:var(--bg)}
@@ -80,25 +82,15 @@
 </head>
 <body>
 <!-- ===== SITE NAV — keep in sync across all pages ===== -->
-<nav class="sitenav" aria-label="Main">
-  <div class="sitenav-inner">
-    <a class="sitenav-brand" href="/">mysolotools</a>
-    <ul>
-      <li class="sitenav-item"><a href="/">Source Prep</a></li>
-      <li class="sitenav-item"><a href="/pdf-unroll">Unroll</a></li>
-      <li class="sitenav-item"><a href="/pdf-note-margins">Note Margins</a></li>
-      <li class="sitenav-item"><a href="/blog">Blog</a></li>
-      <li class="sitenav-item"><a href="/about">About</a></li>
-    </ul>
-  </div>
-</nav>
+<div id="sitenav-root"></div>
+<script src="nav.js"></script>
 <!-- ===== /SITE NAV ===== -->
   <article>
     <p class="kicker">Legal</p>
     <h1>Privacy Policy</h1>
     <p class="byline">Last updated: August 3, 2026</p>
 
-    <p>PDF Source Prep is a set of three free, browser-only PDF tools (PDF Source Prep, PDF Note Margins, and PDF Unroll) plus a short guides blog. This page explains what data we do and don't collect when you use the site.</p>
+    <p>My Solo Tools is a set of free, browser-only PDF tools (Extract PDF Pages, PDF Watermark, PDF Note Margins, and PDF Unroll) plus a short guides blog. This page explains what data we do and don't collect when you use the site.</p>
 
     <div class="callout">
       <b>The short version:</b> your PDF files never leave your browser. All PDF processing happens locally on your device using JavaScript (pdf.js, pdf-lib, JSZip) — files are never uploaded to any server, ever.
@@ -139,7 +131,7 @@
     <p>Questions about this policy? Contact us at <a href="mailto:canvasgoldcn@gmail.com">canvasgoldcn@gmail.com</a>.</p>
 
     <div class="end">
-      PDF Source Prep · a free, browser-only tool for prepping PDFs for Claude and ChatGPT.<br>
+      mysolotools · free, browser-only PDF tools.<br>
       Your files never leave your browser.
     </div>
   </article>
@@ -149,7 +141,7 @@
     <div class="sitefooter-col">
       <h4>Tools</h4>
       <ul>
-        <li><a href="/">PDF Source Prep</a></li>
+        <li><a href="/">Extract PDF Pages</a></li>
         <li><a href="/pdf-unroll">PDF Unroll</a></li>
         <li><a href="/pdf-note-margins">PDF Note Margins</a></li>
       </ul>

@@ -4,16 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20rx%3D%277%27%20fill%3D%27%232F6F6A%27%2F%3E%3Ctext%20x%3D%2716%27%20y%3D%2722.5%27%20font-family%3D%27-apple-system%2CSegoe%20UI%2CHelvetica%2CArial%2Csans-serif%27%20font-size%3D%2720%27%20font-weight%3D%27700%27%20fill%3D%27%23ffffff%27%20text-anchor%3D%27middle%27%3EP%3C%2Ftext%3E%3C%2Fsvg%3E">
-<title>About — PDF Source Prep</title>
-<meta name="description" content="PDF Source Prep is a small set of free, browser-only PDF tools — pick pages for AI chat tools, add note margins, or unroll one long page into printable sheets. Nothing is ever uploaded.">
+<title>About — mysolotools</title>
+<meta name="description" content="One person building small, free, browser-only PDF tools: extract pages, watermark, add note margins, and more. Nothing is ever uploaded.">
 <link rel="canonical" href="https://www.mysolotools.com/about">
 <meta property="og:url" content="https://www.mysolotools.com/about">
 <meta property="og:type" content="website">
-<meta property="og:title" content="About — PDF Source Prep">
-<meta property="og:description" content="A small set of free, browser-only PDF tools. Nothing is ever uploaded.">
+<meta property="og:title" content="About — mysolotools">
+<meta property="og:description" content="One person building small, free, browser-only PDF tools. Nothing is ever uploaded.">
 <meta property="og:image" content="/og.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="About — PDF Source Prep">
+<meta name="twitter:title" content="About — mysolotools">
 <meta name="twitter:image" content="/og.png">
 <style>
   :root{
@@ -32,9 +32,11 @@
     border-bottom:1px solid var(--line)}
   .sitenav-inner{max-width:1080px;margin:0 auto;padding:0 20px;height:56px;
     display:flex;align-items:center;gap:20px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  #sitenav-root:empty{min-height:56px}
   .sitenav-brand{font-family:var(--mono);font-size:14px;font-weight:700;color:var(--ink);
     text-decoration:none;white-space:nowrap;flex:0 0 auto}
   .sitenav ul{list-style:none;margin:0;padding:0;display:flex;gap:2px;flex:0 0 auto}
+  .sitenav-group-content{margin-left:auto}
   .sitenav-item a{display:block;padding:8px 12px;border-radius:8px;text-decoration:none;
     color:var(--muted);font-size:14px;white-space:nowrap}
   .sitenav-item a:hover{color:var(--ink);background:var(--bg)}
@@ -71,43 +73,32 @@
 </head>
 <body>
 <!-- ===== SITE NAV — keep in sync across all pages ===== -->
-<nav class="sitenav" aria-label="Main">
-  <div class="sitenav-inner">
-    <a class="sitenav-brand" href="/">mysolotools</a>
-    <ul>
-      <li class="sitenav-item"><a href="/">Source Prep</a></li>
-      <li class="sitenav-item"><a href="/pdf-unroll">Unroll</a></li>
-      <li class="sitenav-item"><a href="/pdf-note-margins">Note Margins</a></li>
-      <li class="sitenav-item"><a href="/blog">Blog</a></li>
-      <li class="sitenav-item"><a href="/about" aria-current="page">About</a></li>
-    </ul>
-  </div>
-</nav>
+<div id="sitenav-root"></div>
+<script src="nav.js"></script>
 <!-- ===== /SITE NAV ===== -->
   <main>
     <p class="kicker">About</p>
-    <h1>About PDF Source Prep</h1>
+    <h1>About My Solo Tools</h1>
 
-    <p>PDF Source Prep is a free, browser-only toolset for everyday PDF chores — picking pages to hand to an AI chat tool, adding writing margins to slides, or unrolling a single endlessly-tall page into printable sheets. Everything runs locally in your browser; no file is ever uploaded to a server.</p>
+    <p>I'm one person building small tools for problems I keep running into.</p>
 
-    <p>Our tools: <a href="/"><b>PDF Source Prep</b></a> — trim PDFs into a citation-ready source packet for Claude or ChatGPT. <a href="/pdf-note-margins"><b>PDF Note Margins</b></a> — add blank margins for handwritten notes in Notability, GoodNotes or OneNote. <a href="/pdf-unroll"><b>PDF Unroll</b></a> — cut one very long PDF page into printable, readable sheets. There's also a <a href="/blog">guides blog</a> with short write-ups on common PDF-and-AI workflow problems.</p>
+    <p>Some come from my own work. Others come from Reddit, where someone is stuck on a file and the top reply is "just buy Acrobat." If I think a simple browser page could fix it, I build one.</p>
 
-    <h2>Powered by</h2>
-    <p>PDF Source Prep is powered by:</p>
+    <p>Right now that means PDF tools. You can:</p>
     <ul>
-      <li><b>pdf.js</b> (Mozilla) — rendering and reading PDF pages in the browser</li>
-      <li><b>pdf-lib</b> — creating and modifying PDF documents client-side</li>
-      <li><b>JSZip</b> — bundling multiple files into a downloadable .zip</li>
-     </ul>
+      <li>add a watermark before you send a document</li>
+      <li>pull out only the pages you need</li>
+      <li>split a long PDF into smaller files</li>
+      <li>add blank margin space for handwritten notes</li>
+    </ul>
 
-    <h2>Contact</h2>
-    <p>Questions, bug reports, or feature suggestions? Contact us at <a href="mailto:canvasgoldcn@gmail.com">canvasgoldcn@gmail.com</a> — we read every message.</p>
-    <p>mysolotools.com</p>
+    <p>Each tool does one job. That's the whole idea.</p>
 
-    <div class="end">
-      PDF Source Prep · a free, browser-only tool for prepping PDFs for Claude and ChatGPT.<br>
-      Your files never leave your browser.
-    </div>
+    <p>Your files stay on your computer. Everything runs in your browser, so nothing gets uploaded to a server. You can check this yourself: open a tool, turn off your Wi-Fi, and it still works.</p>
+
+    <p>I'll keep adding tools as I find problems worth fixing. If there's one you wish existed, let me know.</p>
+
+    <p>Thanks for stopping by.</p>
   </main>
 <!-- ===== SITE FOOTER — keep in sync across all pages ===== -->
 <footer class="sitefooter">
@@ -115,7 +106,7 @@
     <div class="sitefooter-col">
       <h4>Tools</h4>
       <ul>
-        <li><a href="/">PDF Source Prep</a></li>
+        <li><a href="/">Extract PDF Pages</a></li>
         <li><a href="/pdf-unroll">PDF Unroll</a></li>
         <li><a href="/pdf-note-margins">PDF Note Margins</a></li>
       </ul>

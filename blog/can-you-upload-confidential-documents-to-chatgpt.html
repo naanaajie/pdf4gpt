@@ -49,9 +49,11 @@
     border-bottom:1px solid var(--line)}
   .sitenav-inner{max-width:1080px;margin:0 auto;padding:0 20px;height:56px;
     display:flex;align-items:center;gap:20px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  #sitenav-root:empty{min-height:56px}
   .sitenav-brand{font-family:var(--mono);font-size:14px;font-weight:700;color:var(--ink);
     text-decoration:none;white-space:nowrap;flex:0 0 auto}
   .sitenav ul{list-style:none;margin:0;padding:0;display:flex;gap:2px;flex:0 0 auto}
+  .sitenav-group-content{margin-left:auto}
   .sitenav-item a{display:block;padding:8px 12px;border-radius:8px;text-decoration:none;
     color:var(--muted);font-size:14px;white-space:nowrap}
   .sitenav-item a:hover{color:var(--ink);background:var(--bg)}
@@ -115,18 +117,8 @@
 <body>
 
 <!-- ===== SITE NAV — keep in sync across all pages ===== -->
-<nav class="sitenav" aria-label="Main">
-  <div class="sitenav-inner">
-    <a class="sitenav-brand" href="/">mysolotools</a>
-    <ul>
-      <li class="sitenav-item"><a href="/">Source Prep</a></li>
-      <li class="sitenav-item"><a href="/pdf-unroll">Unroll</a></li>
-      <li class="sitenav-item"><a href="/pdf-note-margins">Note Margins</a></li>
-      <li class="sitenav-item"><a href="/blog" aria-current="page">Blog</a></li>
-      <li class="sitenav-item"><a href="/about">About</a></li>
-    </ul>
-  </div>
-</nav>
+<div id="sitenav-root"></div>
+<script src="../nav.js"></script>
 <!-- ===== /SITE NAV ===== -->
 
 <article class="article">
@@ -172,13 +164,13 @@
   <p>Keeping those two steps apart is what gives you control. The preparation never has to be a data-sharing event at all.</p>
 
   <h2>How to prepare a PDF without uploading it anywhere</h2>
-  <p>This is exactly what <a href="/">PDF Source Prep</a> is built for. It runs entirely in your browser — your file is opened and processed on your own device and is never uploaded to any server. You can open a long PDF, pick out just the pages you need, and export a clean packet, all locally. Then you decide, separately and deliberately, what (if anything) is appropriate to hand to ChatGPT or Claude.</p>
+  <p>This is exactly what <a href="/">Extract PDF Pages</a> is built for. It runs entirely in your browser — your file is opened and processed on your own device and is never uploaded to any server. You can open a long PDF, pick out just the pages you need, and export a clean packet, all locally. Then you decide, separately and deliberately, what (if anything) is appropriate to hand to ChatGPT or Claude.</p>
   <p>It won't make a decision about confidentiality for you — that's yours to make. But it removes the step where the whole document gets sent somewhere just so you can trim it down.</p>
 
   <div class="cta">
     <h3>Prepare a PDF locally, in your browser</h3>
     <p>Pick the pages you need. Nothing is uploaded.</p>
-    <a class="btn" href="/">Open PDF Source Prep</a>
+    <a class="btn" href="/">Open Extract PDF Pages</a>
   </div>
 
   <div class="more">
@@ -195,7 +187,7 @@
     <div class="sitefooter-col">
       <h4>Tools</h4>
       <ul>
-        <li><a href="/">PDF Source Prep</a></li>
+        <li><a href="/">Extract PDF Pages</a></li>
         <li><a href="/pdf-unroll">PDF Unroll</a></li>
         <li><a href="/pdf-note-margins">PDF Note Margins</a></li>
       </ul>
